@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlapique <mlapique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 10:21:23 by mlapique          #+#    #+#             */
-/*   Updated: 2023/10/19 20:12:29 by mlapique         ###   ########.fr       */
+/*   Created: 2023/10/19 17:20:31 by mlapique          #+#    #+#             */
+/*   Updated: 2023/10/19 17:38:41 by mlapique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dst, char *src, int dstsize)
+int atoi(const char *nptr)
 {
-	int	i;
-	int	ldst;
-	
-	i = 0;
-	ft_strlen(dst);
-	while (dst[i] && i < dstsize - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (ldst);
+    int i;
+
+    i = 0;
+    while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr == 32);
+    {
+        i++;
+    }
+    while ()
 }

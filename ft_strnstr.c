@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlapique <mlapique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 10:21:23 by mlapique          #+#    #+#             */
-/*   Updated: 2023/10/19 20:12:29 by mlapique         ###   ########.fr       */
+/*   Created: 2023/10/19 16:56:16 by mlapique          #+#    #+#             */
+/*   Updated: 2023/10/19 20:52:51 by mlapique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dst, char *src, int dstsize)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
-	int	ldst;
-	
+	size_t	i;
+	size_t	lenlittle;
+	int		test;
+
+	if (!little)
+		return ((char *)big);
+	lenlittle = ft_strlen((char *)little);
 	i = 0;
-	ft_strlen(dst);
-	while (dst[i] && i < dstsize - 1)
+	while (big[i] && i < len)
 	{
-		dst[i] = src[i];
+		test = ft_strncmp(&big[i], little, lenlittle);
+		if (test == 0)
+			return ((char *)&big[i]);
 		i++;
 	}
-	dst[i] = '\0';
-	return (ldst);
+	return (NULL);
+}
+
+int main()
+{
+	char i[] = "bonjourour";
+	char b[] = "our";
+	strnstr(i,b,10);
 }
