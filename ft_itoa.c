@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlapique <mlapique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/24 11:39:23 by mlapique          #+#    #+#             */
+/*   Updated: 2023/10/24 11:39:23 by mlapique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int		ft_len_nb(long n)
+static int	ft_len_nb(long n)
 {
 	size_t	len_nb;
 
@@ -18,7 +30,7 @@ static int		ft_len_nb(long n)
 	return (len_nb);
 }
 
-static char		*ft_gen(char *result, long nbr, int len, int negative)
+static char	*ft_tabcreation(char *result, long nbr, int len, int negative)
 {
 	if (nbr != 0)
 		result = malloc(sizeof(char) * (len + 1));
@@ -44,7 +56,7 @@ static char		*ft_gen(char *result, long nbr, int len, int negative)
 	return (result);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	*result;
@@ -55,7 +67,7 @@ char			*ft_itoa(int n)
 	len = ft_len_nb(nbr);
 	result = 0;
 	negative = 1;
-    result = ft_gen(result, nbr, len, negative)
+	result = ft_tabcreation(result, nbr, len, negative);
 	if (!result)
 		return (0);
 	return (result);

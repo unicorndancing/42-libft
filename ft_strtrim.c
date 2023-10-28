@@ -1,16 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mlapique <mlapique@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/24 11:37:25 by mlapique          #+#    #+#             */
+/*   Updated: 2023/10/24 11:37:25 by mlapique         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-
-static int		verif_set(char c, const char *set)
-{
-    int i;
-
-    i = 0;
-	while (set[i])
-		if (c == set[i])
-			return (0);
-        i++;
-	return (1);
-}
 
 char			*ft_strtrim(char const *s1, char const *set)
 {
@@ -21,20 +21,15 @@ char			*ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (NULL);
 	if (!set)
-		return (ft_strdup(s1));
+	 	return (ft_strdup((char *)s1));
 	start = 0;
-	end = ft_strlen(s1);
-	while (verif_set(s1[start], set) == 0)
+	end = ft_strlen((char *)s1);
+	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	if (start == end)
-	{
-		if (!(result = ft_strdup("")))
-			return (NULL);
-		else
-			return (result);
-	}
-	while (verif_set(s1[end - 1], set) == 0)
+	while (end > start && ft_strchr(set, s1[end - 1]))
 		end--;
+	if (start >= end)
+		return (ft_strdup(""));
 	result = ft_substr(s1, start, end - start);
 	return (result);
 }

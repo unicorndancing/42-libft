@@ -18,23 +18,19 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	lenlittle;
 	int		test;
 
-	if (!little)
-		return ((char *)big);
 	lenlittle = ft_strlen((char *)little);
 	i = 0;
-	while (big[i] && i < len)
+	if (little[0] == '\0' && big[0] == '\0')
+		return ((char *) big);
+	while (big[i] && i <= len)
 	{
-		test = ft_strncmp(&big[i], little, lenlittle);
-		if (test == 0)
-			return ((char *)&big[i]);
+		if (i + lenlittle <= len)
+		{
+			test = ft_strncmp(&big[i], little, lenlittle);
+			if (test == 0)
+				return ((char *)&big[i]);
+		}
 		i++;
 	}
 	return (NULL);
-}
-
-int main()
-{
-	char i[] = "bonjourour";
-	char b[] = "our";
-	strnstr(i,b,10);
 }
