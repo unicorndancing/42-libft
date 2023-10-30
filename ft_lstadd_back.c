@@ -1,11 +1,11 @@
+#include "libft.h"
+
 void ft_lstadd_back(t_list **lst, t_list *new)
 {
-    
-    if (!lst)
-        *lst = lst->new;
-    else
+    t_list *last;
+    if (*lst)
     {
-    *lst = ft_lstlast(lst);
-    (*lst)->next = new; 
+        last = ft_lstlast(lst);
+        last->next = &new; 
     }
 }
