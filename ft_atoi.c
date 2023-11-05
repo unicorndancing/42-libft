@@ -25,7 +25,7 @@ int	ft_atoi(const char *nptr)
 		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		if(nptr[i] == '-')
+		if (nptr[i] == '-')
 			negative = -1;
 		i++;
 	}

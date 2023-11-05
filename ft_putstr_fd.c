@@ -20,7 +20,7 @@ void	ft_putstr_fd(char *s, int fd)
 	if (s)
 	{
 		i = ft_strlen(s);
-		if(!(write (fd, s, i)))
+		if (!(write (fd, s, i)))
 			return ;
 	}
 }

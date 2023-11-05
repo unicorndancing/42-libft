@@ -11,26 +11,25 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <bsd/string.h>
 
-
-int	ft_strlcat(char *dst, const char *src, size_t n)
+int	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	k;
 	size_t	j;
 
+	if ((!dst || !src )&& size == 0)
+		return (0);
 	i = 0;
 	j = 0;
 	k = 0;
 	i = ft_strlen((char *)dst);
 	k = ft_strlen((char *)src);
-	if (n < i)
-		k = k + n; 
+	if (size < i)
+		k = k + size;
 	else
 		k = k + i;
-	while (src[j] && i + 1 < n)
+	while (src[j] && i + 1 < size)
 		dst[i++] = src[j++];
 	dst[i] = '\0';
 	return (k);

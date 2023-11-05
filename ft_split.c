@@ -6,7 +6,7 @@
 /*   By: mlapique <mlapique@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:07:48 by mlapique          #+#    #+#             */
-/*   Updated: 2023/10/28 13:03:05 by mlapique         ###   ########.fr       */
+/*   Updated: 2023/11/02 17:00:57 by mlapique         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	ft_count(char *s, char c)
 {
-	int i;
-	int word;
+	int	i;
+	int	word;
 
 	i = 0;
 	word = 0;
@@ -33,23 +33,25 @@ static int	ft_count(char *s, char c)
 	return (word);
 }
 
-static void freememory(char **str)
+static void	freememory(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
 		free(str[i]);
+		str[i] = NULL;
 		i++;
 	}
 	free(str);
+	str = NULL;
 }
 
-static char **spliting(char **result, int i, char c, char *s)
+static char	**spliting(char **result, int i, char c, char *s)
 {
-	int start;
-	int ind;
+	int	start;
+	int	ind;
 
 	ind = 0;
 	start = 0;
@@ -61,10 +63,10 @@ static char **spliting(char **result, int i, char c, char *s)
 		{
 			result[ind] = ft_substr(s, start, i - start + 1);
 			if (result[ind] == NULL)
-				{
-					freememory(result);
-					return (result);
-				}
+			{
+				freememory(result);
+				return (NULL);
+			}
 			ind++;
 		}
 		i++;
@@ -72,6 +74,7 @@ static char **spliting(char **result, int i, char c, char *s)
 	result[ind] = 0;
 	return (result);
 }
+
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
@@ -82,8 +85,10 @@ char	**ft_split(char const *s, char c)
 	ind = 0;
 	i = 0;
 	start = 0;
-	result = malloc(sizeof(char *) * (ft_count((char *)s, c) + 1));
-	if (!s || !result)
+	if (!s)
+		return (NULL);
+	result = ft_calloc(sizeof(char *), (ft_count((char *)s, c) + 1));
+	if (!result)
 		return (NULL);
 	result = spliting(result, i, c, (char *)s);
 	return (result);

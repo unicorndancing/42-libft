@@ -1,5 +1,6 @@
 NAME = libft.a
 OBJS = $(SOURCES:.c=.o) #remplace les .c par des .o dans les sources
+OBJSBNS = $(SOURCESBONUS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror #fsanitize=adress pour les leaks de memoires
 SOURCES = ft_isalnum.c \
@@ -37,18 +38,31 @@ SOURCES = ft_isalnum.c \
 	ft_split.c \
 	ft_tolower.c
 
+SOURCESBONUS =	ft_lstadd_back.c \
+	ft_lstadd_front.c \
+	ft_lstclear.c \
+	ft_lstdelone.c \
+	ft_lstiter.c \
+	ft_lstlast.c \
+	ft_lstnew.c \
+	ft_lstsize.c \
+	ft_lstmap.c
+
 all : $(NAME)
 	
-$(NAME) : $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(NAME) : $(OBJS) 
+	ar rcs $(NAME) $(OBJS)  
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
+	$(CC) $(CFLAGS) -c $< -o $@ 
+	
 clean: 
-	rm -f $(OBJS)  #nettoi les .o
+	rm -f $(OBJS) $(OBJSBNS) 
 
 fclean: clean
-	rm -f $(NAME) #nettoi tous
+	rm -f $(NAME) 
 
-re: fclean $(CLEAN)
+re: fclean all
+
+bonus: $(OBJS) $(OBJSBNS)
+	ar rcs $(NAME) $(OBJS) $(OBJSBNS)

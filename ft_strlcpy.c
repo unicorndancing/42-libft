@@ -14,16 +14,16 @@
 #include <stdio.h>
 #include <bsd/string.h>
 
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	lsrc;
-	
+
 	i = 0;
 	lsrc = ft_strlen(src);
-	if (!dstsize)
+	if (!size)
 		return (lsrc);
-	while (src[i] && i + 1 < dstsize)
+	while (src[i] && i + 1 < size)
 	{
 		dst[i] = src[i];
 		i++;
@@ -31,14 +31,3 @@ size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 	dst[i] = '\0';
 	return (lsrc);
 }
-
-// int main ()
-// {
-// 	char src[] = "coucou";
-// 	char dest[10];
-// 	char src1[] = "coucou";
-// 	char dest1[10] = "AAAAAAAAAA";
-
-// 	printf("%ld\n%s\n",ft_strlcpy(dest,src,6),dest);
-// 	printf("%ld\n%s\n",strlcpy(dest1,src1,6),dest1);
-// }

@@ -25,6 +25,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	result = malloc(overflowpro);
 	if (!result)
 		return (NULL);
-	ft_bzero(result, nmemb * size);
+	ft_bzero(result, overflowpro);
 	return (result);
 }

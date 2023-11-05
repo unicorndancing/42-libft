@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	s1_len;
 	size_t	s2_len;
@@ -20,7 +20,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	char	*result;
 
 	if (!s1 && !s2)
-		return (ft_strdup(""));
+		return (NULL);
 	if (s1 && !s2)
 		return (ft_strdup((char *)s1));
 	if (!s1 && s2)
